@@ -50,7 +50,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 6673344639297859781}
-  perception: {fileID: 2673436417848886184, guid: 37752546a5e9e78418728696226248b3, type: 3}
+  displacement: 20
+  distance: 6
+  radius: 3
+  seekPerception: {fileID: 0}
+  fleePerception: {fileID: -1008195951716624559}
 --- !u!114 &-1008195951716624559
 MonoBehaviour:
   m_ObjectHideFlags: 0
