@@ -69,7 +69,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tagName: Agent01
-  maxDistance: 5
+  maxDistance: 18
   maxAngle: 180
 --- !u!114 &-7765790146435405892
 MonoBehaviour:
@@ -78,14 +78,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 491331457195176769}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 13599f74675387640a8392dd0fb93d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tagName: Agent02
   maxDistance: 5
-  maxAngle: 150
+  maxAngle: 120
 --- !u!114 &6673344639297859781
 MonoBehaviour:
   m_ObjectHideFlags: 0

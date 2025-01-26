@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -98,7 +99,7 @@ public class AutonomousAgent : AiAgent
         
         
         //keeps the agents from just completely leaving the game area.
-        float size = 25;
+        float size = 15;
         transform.position = Utilities.Wrap(transform.position, new Vector3( -size, -size, -size ), new Vector3( size, size, size ));
 
 
@@ -129,6 +130,8 @@ public class AutonomousAgent : AiAgent
     //calucaltes force vector to move towards an average center of a group
     private Vector3 Cohesion(GameObject[] neighbors)
     {
+        //print("flocking");
+
         //find the average center point of all neighbors
         Vector3 positions = Vector3.zero;
         foreach(GameObject neighbor in neighbors)
@@ -147,18 +150,39 @@ public class AutonomousAgent : AiAgent
 
     private Vector3 Seperation(GameObject[] neighbors, float radius)
     {
-        return Vector3.zero;
+        Vector3 seperation = Vector3.zero;
+
+        foreach(GameObject neighbor in neighbors)
+        {
+            Vector3 direction = transform.position - neighbor.transform.position;
+            float distance = Vector3.Magnitude(direction);
+            if(distance < radius)
+            {
+                seperation += direction / (distance * distance);
+            }
+        }
+
+        return GetSteeringForce(seperation);
     }
 
     //calucaltes force vector to move in the same average direction as the group
     private Vector3 Alignment(GameObject[] neighbors)
     {
-        return Vector3.zero;
+        Vector3 velocities = Vector3.zero;
+        foreach(GameObject neighbor in neighbors)
+        {
+            velocities += neighbor.GetComponent<AiAgent>().GetComponent<Movement>().Velocity;
+        }
+        Vector3 averageVelocity = velocities / neighbors.Length;
+
+
+        return GetSteeringForce(averageVelocity);
     }
 
     //calucaltes force vector to move in a semi-random direction.
     private Vector3 Wander()
     {
+        //print("Wandering");
         //angle += Random.Range(-displacement, displacement);
         //Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.up);
         //Vector3 point = rotation * (Vector3.forward * radius);
