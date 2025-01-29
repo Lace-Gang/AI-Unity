@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5714426218033122049}
   - component: {fileID: 2673436417848886184}
   - component: {fileID: -6337224210687427022}
+  - component: {fileID: 1911074388174158634}
   - component: {fileID: 2898832977331118390}
   - component: {fileID: 5572106476260573433}
   - component: {fileID: 755209739188501797}
@@ -56,6 +57,7 @@ MonoBehaviour:
   seekPerception: {fileID: 2673436417848886184}
   fleePerception: {fileID: 0}
   flockPerception: {fileID: -6337224210687427022}
+  obsticlePerception: {fileID: 1911074388174158634}
 --- !u!114 &2673436417848886184
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,9 +70,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13599f74675387640a8392dd0fb93d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: Seek
   tagName: Agent02
   maxDistance: 20
   maxAngle: 180
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &-6337224210687427022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,9 +89,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13599f74675387640a8392dd0fb93d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: Flock
   tagName: Agent01
   maxDistance: 10
   maxAngle: 120
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
+--- !u!114 &1911074388174158634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7694928492916070112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad02dba8264a4b54d9109f6f1fabb6d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Obsticles
+  tagName: 
+  maxDistance: 6
+  maxAngle: 120
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  numRaycast: 8
 --- !u!114 &2898832977331118390
 MonoBehaviour:
   m_ObjectHideFlags: 0

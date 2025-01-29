@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: -1008195951716624559}
   - component: {fileID: -7765790146435405892}
   - component: {fileID: 6673344639297859781}
+  - component: {fileID: -9018663741980991709}
   - component: {fileID: 6266975341473413307}
   - component: {fileID: 2095926461293695363}
   - component: {fileID: 1769486329912323003}
@@ -56,6 +57,7 @@ MonoBehaviour:
   seekPerception: {fileID: 0}
   fleePerception: {fileID: -1008195951716624559}
   flockPerception: {fileID: -7765790146435405892}
+  obsticlePerception: {fileID: -9018663741980991709}
 --- !u!114 &-1008195951716624559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,9 +70,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13599f74675387640a8392dd0fb93d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: Flee
   tagName: Agent01
   maxDistance: 18
   maxAngle: 180
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &-7765790146435405892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83,9 +89,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13599f74675387640a8392dd0fb93d75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  description: Flock
   tagName: Agent02
   maxDistance: 5
   maxAngle: 120
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &6673344639297859781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,6 +109,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 20a13d9c8660c2142a8c6e1a2b76f754, type: 2}
+--- !u!114 &-9018663741980991709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 491331457195176769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad02dba8264a4b54d9109f6f1fabb6d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Obsticle Perception
+  tagName: 
+  maxDistance: 6
+  maxAngle: 120
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  numRaycast: 8
 --- !u!33 &6266975341473413307
 MeshFilter:
   m_ObjectHideFlags: 0

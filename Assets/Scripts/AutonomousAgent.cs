@@ -16,6 +16,7 @@ public class AutonomousAgent : AiAgent
     public Perception seekPerception;
     public Perception fleePerception;
     public Perception flockPerception;
+    public Perception obsticlePerception;
 
     //FloatRangeParameter angle; //I think this was a typo, but just in case
     float angle;
@@ -70,6 +71,33 @@ public class AutonomousAgent : AiAgent
         }
 
 
+        //OBSTICLE
+        if(obsticlePerception != null )
+        {
+            //if(obsticlePerception.CheckDirection(Vector3.forward))
+            //{
+            //    //print("true");
+            //    Debug.DrawRay(transform.position, transform.rotation * Vector3.forward * 30, Color.red, 0.5f);
+            //}
+            //else
+            //{
+            //    //print("false");
+            //    Debug.DrawRay(transform.position, transform.rotation * Vector3.forward * 30, Color.yellow, 0.5f);
+            //}
+
+            if (obsticlePerception != null && obsticlePerception.CheckDirection(Vector3.forward))
+            {
+                Vector3 direction = Vector3.zero;
+                if (obsticlePerception.GetOpenDirection(ref direction))
+                {
+                    Debug.DrawRay(transform.position, direction * 5, Color.red, 0.2f);
+
+                    movement.ApplyForce(GetSteeringForce(direction) * data.obstacleWeight);
+                }
+            }
+        }
+
+
         //WANDER - if not moving (seeking/fleeing)
         if(movement.Acceleration.sqrMagnitude == 0)
         {
@@ -81,7 +109,7 @@ public class AutonomousAgent : AiAgent
 
         //because otherwise they might start to spontaneously fly.
         Vector3 acceleration = movement.Acceleration;
-        acceleration.y = 0;
+        //acceleration.y = 0;
         movement.Acceleration = acceleration;
 
 
@@ -99,7 +127,8 @@ public class AutonomousAgent : AiAgent
         
         
         //keeps the agents from just completely leaving the game area.
-        float size = 15;
+        //float size = 15;
+        float size = 55;
         transform.position = Utilities.Wrap(transform.position, new Vector3( -size, -size, -size ), new Vector3( size, size, size ));
 
 
