@@ -10,7 +10,7 @@ public class Dijkstra : MonoBehaviour
         var nodes = new SimplePriorityQueue<NavNode>();
 
         startNode.Cost = 0;
-        nodes.Enqueue(startNode, startNode.Cost);
+        nodes.EnqueueWithoutDuplicates(startNode, startNode.Cost);
         bool found = false;
         while(nodes.Count > 0 && !found)
         {
@@ -28,7 +28,7 @@ public class Dijkstra : MonoBehaviour
                     neighbor.Cost = cost;
                     neighbor.Previous = currentNode;
 
-                    nodes.Enqueue(neighbor, neighbor.Cost);
+                    nodes.EnqueueWithoutDuplicates(neighbor, neighbor.Cost);
                 }
             }
         }

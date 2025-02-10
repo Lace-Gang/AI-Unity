@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: NavAgentMovementData
   m_EditorClassIdentifier: 
   maxSpeed: 5
-  minSpeed: 5
+  minSpeed: 6
   maxForce: 20
+  turnRate: 5
